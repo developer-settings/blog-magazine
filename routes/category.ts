@@ -1,9 +1,8 @@
 import { Router } from 'express';
-
 const router = Router();
 
-router.get('/', (req, res) => {
-  res.send('This is the Home Page!');
+router.get('/', async (req, res) => {
+  res.send('This is the Categories Page!');
 });
 
 export default router;
