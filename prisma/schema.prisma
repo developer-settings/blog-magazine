@@ -17,6 +17,7 @@ model User {
   first_name String @db.VarChar(255)
   last_name  String @db.VarChar(255)
   email   String   @unique
+  hashed_password String @db.VarChar(255)
   posts   Post[]
 }
 
