@@ -12,6 +12,7 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "prisma": "^5.9.1",
     "zod": "^3.22.4"
   }
 }
