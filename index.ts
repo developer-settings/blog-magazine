@@ -3,7 +3,7 @@ import home from './routes/home';
 import category from './routes/category';
 import post from './routes/posts';
 import users from './routes/users';
-import auth from './routes/auth';
+import auth from './routes/authentification';
 
 const port = Bun.env.PORT || 3000;
 const JWT_SECRET = Bun.env.JWT_SECRET;

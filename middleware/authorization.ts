@@ -9,7 +9,11 @@ declare global {
   }
 }
 
-export const auth = (req: Request, res: Response, next: NextFunction) => {
+export const authorization = (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
   const token = req.header('x-auth-token');
   if (!token) {
     return res.status(401).json('Access denied. No token provided.');
