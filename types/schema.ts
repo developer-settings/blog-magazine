@@ -24,6 +24,11 @@ export const userSchema = z.object({
     }),
 });
 
+export const validateUser = z.object({
+  email: z.string({ required_error: 'Email is required' }).email(),
+  hashed_password: z.string({ required_error: 'Password is required' }),
+});
+
 export const categorySchema = z.object({
   name: z
     .string({ required_error: 'Name is required' })
