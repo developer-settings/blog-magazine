@@ -41,7 +41,9 @@ router.post('/', async (req, res) => {
     );
     res
       .header('x-auth-token', token)
-      .send(lodash.pick(user, ['id', 'first_name', 'last_name', 'email']));
+      .send(
+        lodash.pick(user, ['id', 'first_name', 'last_name', 'email', 'role'])
+      );
 
     await prisma.$disconnect();
   } catch (error) {
