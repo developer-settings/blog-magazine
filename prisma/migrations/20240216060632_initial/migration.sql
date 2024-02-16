@@ -1,9 +1,14 @@
+-- CreateEnum
+CREATE TYPE "Role" AS ENUM ('USER', 'ADMIN');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" TEXT NOT NULL,
     "first_name" VARCHAR(255) NOT NULL,
     "last_name" VARCHAR(255) NOT NULL,
     "email" TEXT NOT NULL,
+    "hashed_password" VARCHAR(255) NOT NULL,
+    "role" "Role" NOT NULL DEFAULT 'USER',
 
     CONSTRAINT "User_pkey" PRIMARY KEY ("id")
 );
@@ -12,6 +17,7 @@ CREATE TABLE "User" (
 CREATE TABLE "Category" (
     "id" TEXT NOT NULL,
     "name" VARCHAR(255) NOT NULL,
+    "slug" VARCHAR(255) NOT NULL,
 
     CONSTRAINT "Category_pkey" PRIMARY KEY ("id")
 );
@@ -20,8 +26,10 @@ CREATE TABLE "Category" (
 CREATE TABLE "Post" (
     "id" TEXT NOT NULL,
     "title" VARCHAR(255) NOT NULL,
+    "slug" VARCHAR(255) NOT NULL,
     "content" TEXT NOT NULL,
     "user_id" TEXT NOT NULL,
+    "image_url" VARCHAR(255),
     "category_id" TEXT NOT NULL,
     "created_at" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updated_at" TIMESTAMP(3) NOT NULL,
