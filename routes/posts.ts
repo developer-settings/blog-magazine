@@ -4,6 +4,7 @@ import { Router } from 'express';
 import { admin } from '../middleware/admin';
 import { authorization } from '../middleware/authorization';
 import { postSchema } from '../types/schema';
+import { uploadImage } from '../utils';
 
 const router = Router();
 
@@ -59,7 +60,7 @@ router.post(
           title: validation.data.title,
           content: validation.data.content,
           category_id: validation.data.category_id,
-          image_url: validation.data.image_url,
+          image_url: await uploadImage(validation.data.image_url!),
           slug: validation.data.title.toLowerCase().split(' ').join('-'),
           user_id: req.user.id,
         },
@@ -92,7 +93,7 @@ router.put(
           title: validation.data.title,
           content: validation.data.content,
           category_id: validation.data.category_id,
-          image_url: validation.data.image_url,
+          image_url: await uploadImage(validation.data.image_url!),
           slug: validation.data.title.toLowerCase().split(' ').join('-'),
         },
       });
