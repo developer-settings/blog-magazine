@@ -26,6 +26,7 @@ model Category {
 
   id        String      @id @default(uuid())
   name      String   @db.VarChar(255)
+  slug      String   @db.VarChar(255)
   posts     Post[]
 
 }
@@ -33,6 +34,7 @@ model Category {
 model Post {
   id        String      @id @default(uuid())
   title     String   @db.VarChar(255)
+  slug      String   @db.VarChar(255)
   content   String @db.Text
   user      User     @relation(fields: [user_id], references: [id])
   user_id  String

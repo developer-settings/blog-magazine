@@ -31,7 +31,7 @@ export const validateUser = z.object({
 
 export const categorySchema = z.object({
   name: z
-    .string({ required_error: 'Name is required' })
+    .string({ required_error: 'Category Name is required' })
     .min(3, {
       message: 'Category Name must be at least 3 characters long',
     })
