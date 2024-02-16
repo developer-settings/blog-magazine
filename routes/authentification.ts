@@ -39,6 +39,7 @@ router.post('/', async (req, res) => {
     res.header('x-auth-token', token);
     res.send(token);
     await prisma.$disconnect();
+    return;
   } catch (error) {
     console.error(error);
     await prisma.$disconnect();

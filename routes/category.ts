@@ -56,7 +56,9 @@ router.post(
     });
 
     if (isCategoryExists) {
-      return res.status(400).json('Category already exists');
+      res.status(400).json('Category already exists');
+      await prisma.$disconnect();
+      return;
     }
 
     try {
@@ -91,7 +93,9 @@ router.patch(
     });
 
     if (!category) {
-      return res.status(404).json('Category not found');
+      res.status(404).json('Category not found');
+      await prisma.$disconnect();
+      return;
     }
 
     const isCategoryExists = await prisma.category.findFirst({
@@ -99,7 +103,9 @@ router.patch(
     });
 
     if (isCategoryExists) {
-      return res.status(400).json('Category already exists');
+      res.status(400).json('Category already exists');
+      await prisma.$disconnect();
+      return;
     }
 
     try {
@@ -121,7 +127,6 @@ router.patch(
   }
 );
 
-
 router.delete(
   '/:id',
   [authorization, admin],
@@ -131,7 +136,9 @@ router.delete(
     });
 
     if (!category) {
-      return res.status(404).json('Category not found');
+      res.status(404).json('Category not found');
+      await prisma.$disconnect();
+      return;
     }
 
     try {

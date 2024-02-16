@@ -50,7 +50,7 @@ export const postSchema = z.object({
 
   category_id: z.string({ required_error: 'Category is required' }),
 
-  post_image: z.string({ required_error: 'Image is required' }).optional(),
+  image_url: z.string({ required_error: 'Image is required' }).optional(),
 
   user_id: z.string({ required_error: 'User is required' }),
 });
